@@ -3,11 +3,11 @@ import { defineConfig } from "astro/config";
 
 // https://astro.build/config
 export default defineConfig({
-  // Your GitHub Pages address. Replace "your-username" with your GitHub username.
-  site: "https://your-username.github.io",
+  // The GitHub Pages address.
+  site: "https://marcornv.github.io",
 
-  // If the repository is named "your-username.github.io", leave `base` out.
-  // If it has another name (e.g. "portfolio"), the site is served from a sub-folder,
-  // so uncomment the line below and use that name:
-  // base: "/portfolio",
+  // The repository is named "portfolio-website", so GitHub Pages serves the site
+  // from that sub-folder. If the repository is renamed to "marcornv.github.io",
+  // remove this line.
+  base: "/portfolio-website",
 });
