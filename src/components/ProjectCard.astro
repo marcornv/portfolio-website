@@ -1,0 +1,182 @@
+---
+import { Image } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  project: CollectionEntry<"projects">;
+}
+
+const { title, description, repo, demo, image, imageAlt, tags } = Astro.props.project.data;
+
+const initials = title
+  .split(/\s+/)
+  .slice(0, 2)
+  .map((word) => word[0]?.toUpperCase())
+  .join("");
+---
+
+<article class="card">
+  <div class="frame">
+    {
+      image ? (
+        <Image
+          src={image}
+          alt={imageAlt ?? ""}
+          widths={[400, 720, 1080]}
+          sizes="(min-width: 72rem) 22rem, (min-width: 40rem) 45vw, 92vw"
+        />
+      ) : (
+        <div class="fallback" aria-hidden="true">
+          {initials}
+        </div>
+      )
+    }
+  </div>
+
+  <div class="body">
+    <h3>
+      <a class="title" href={repo}>{title}</a>
+    </h3>
+    <p class="description">{description}</p>
+
+    {
+      tags.length > 0 && (
+        <dl class="meta">
+          <dt>Built with</dt>
+          <dd>{tags.join(", ")}</dd>
+        </dl>
+      )
+    }
+
+    <p class="links">
+      <span class="repo-label" aria-hidden="true">View repository</span>
+      {demo && <a class="demo" href={demo}>Live demo</a>}
+    </p>
+  </div>
+</article>
+
+<style>
+  .card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    background: var(--paper-raised);
+    transition: border-color 0.15s ease;
+  }
+  .card:hover,
+  .card:focus-within {
+    border-color: var(--ink);
+  }
+
+  /* Image framed with small corner ticks, like a spec sheet. */
+  .frame {
+    --tick: 12px;
+    --t: linear-gradient(var(--graphite), var(--graphite));
+    border-bottom: 1px solid var(--rule);
+    --i: 4px;
+    padding: 12px;
+    background:
+      var(--t) top var(--i) left var(--i) / var(--tick) 1px no-repeat,
+      var(--t) top var(--i) left var(--i) / 1px var(--tick) no-repeat,
+      var(--t) top var(--i) right var(--i) / var(--tick) 1px no-repeat,
+      var(--t) top var(--i) right var(--i) / 1px var(--tick) no-repeat,
+      var(--t) bottom var(--i) left var(--i) / var(--tick) 1px no-repeat,
+      var(--t) bottom var(--i) left var(--i) / 1px var(--tick) no-repeat,
+      var(--t) bottom var(--i) right var(--i) / var(--tick) 1px no-repeat,
+      var(--t) bottom var(--i) right var(--i) / 1px var(--tick) no-repeat;
+  }
+  .frame :global(img),
+  .fallback {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+  }
+  .fallback {
+    display: grid;
+    place-items: center;
+    background-color: var(--paper);
+    background-image: radial-gradient(var(--rule) 1.2px, transparent 1.4px);
+    background-size: 14px 14px;
+    color: var(--ink);
+    font-size: var(--step-4);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+  }
+
+  .body {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: var(--space-1);
+    padding: var(--space-2) var(--space-2) var(--space-3);
+  }
+  h3 {
+    font-size: var(--step-1);
+    letter-spacing: -0.01em;
+  }
+  .title {
+    color: var(--ink);
+    text-decoration: none;
+  }
+  /* The title link covers the whole card, so the card is one click target. */
+  .title::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+  }
+  .title:focus-visible {
+    outline: none;
+  }
+  .card:has(.title:focus-visible) {
+    outline: 3px solid var(--focus);
+    outline-offset: 3px;
+  }
+  .card:hover .title,
+  .title:focus-visible {
+    text-decoration: underline;
+    text-decoration-color: var(--marker);
+    text-decoration-thickness: 2px;
+  }
+  .description {
+    color: var(--graphite);
+    max-width: var(--measure);
+  }
+  .meta {
+    display: flex;
+    gap: 0.4em;
+    margin: var(--space-1) 0 0;
+    font-size: var(--step--1);
+  }
+  .meta dt {
+    color: var(--graphite);
+  }
+  .meta dd {
+    margin: 0;
+    font-weight: 600;
+  }
+  .links {
+    display: flex;
+    gap: var(--space-3);
+    margin-top: auto;
+    padding-top: var(--space-2);
+    font-weight: 600;
+    font-size: var(--step--1);
+  }
+  .repo-label {
+    color: var(--link);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.2em;
+  }
+  .card:hover .repo-label {
+    text-decoration-color: var(--marker);
+    text-decoration-thickness: 2px;
+  }
+  /* Keep the demo link clickable above the card-wide title link. */
+  .demo {
+    position: relative;
+    z-index: 1;
+  }
+</style>

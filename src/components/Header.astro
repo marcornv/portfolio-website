@@ -1,0 +1,65 @@
+---
+import ThemeToggle from "./ThemeToggle.astro";
+import { site } from "../site.config";
+import { withBase } from "../lib/url";
+---
+
+<header class="site-header">
+  <div class="wrap bar">
+    <a class="name" href={withBase("/")}>{site.name}</a>
+    <nav aria-label="Main">
+      <ul>
+        {
+          site.nav.map((item) => (
+            <li>
+              <a href={withBase(item.href)}>{item.label}</a>
+            </li>
+          ))
+        }
+      </ul>
+      <ThemeToggle />
+    </nav>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    border-bottom: 1px solid var(--rule);
+  }
+  .bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-2);
+    min-height: 4rem;
+  }
+  .name {
+    color: var(--ink);
+    font-weight: 700;
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+  nav {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+  }
+  ul {
+    display: flex;
+    gap: var(--space-3);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  ul a {
+    color: var(--graphite);
+    font-weight: 500;
+    text-decoration: none;
+  }
+  ul a:hover {
+    color: var(--ink);
+    text-decoration: underline;
+    text-decoration-color: var(--marker);
+    text-decoration-thickness: 2px;
+  }
+</style>
