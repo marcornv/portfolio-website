@@ -15,8 +15,10 @@ skills:
     items: [Portuguese, English, French (basic), German (basic)]
 ---
 
-I'm Marco, a machine learning engineer working mostly with generative AI and natural language processing. Over the past few years I've built AI agents that work inside tools like Slack and Salesforce, search and recommendation systems, voice assistants for phone calls, and systems that read invoices, receipts and legal documents.
+I'm Marco, a machine learning engineer focused on generative AI and natural language processing. I've built AI agents that work inside tools like Slack and Salesforce, search and recommendation systems, voice assistants for phone calls, and systems that read invoices, receipts and legal documents. Before that, I built default-risk models for a large retailer, demand forecasting and budget planning tools that explain their own predictions, question-answering over company documents, and tools that help pharmaceutical teams review their materials.
 
-I studied industrial engineering at the Federal University of Pernambuco, with an exchange semester at Polytechnique Montréal. Before moving into machine learning, I built route-planning software, data dashboards and helped early-stage startups at a university incubator.
+With today's AI tools, one person with a computer can build software that used to need a whole team. I'm using that to build free, open-source tools for simple, everyday problems, with the help of AI. They run on your own computer, without a cloud account or a subscription, and anyone can use them, adapt them or build on top of them.
 
-This site is where I use that experience outside of work: building free, open-source tools that anyone can use, whether they write code or not. If you have an idea for a tool, want to contribute to one, or just want to talk about AI, I'd be glad to hear from you.
+That matters most for people who can't pay for another subscription, or who work with data they'd rather keep on their own machine. Some of these projects have AI features and some don't: the goal is to solve each problem in the simplest way that works, and to cover more kinds of problems over time.
+
+Every project here is open. If you want to try one, suggest an improvement or contribute, you're welcome. And if you have an everyday problem you think a simple tool could solve, I'd like to hear about it.
