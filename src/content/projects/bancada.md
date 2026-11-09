@@ -1,6 +1,6 @@
 ---
 title: Bancada
-description: "A test bench for AI language models: run the same data through several models side by side and compare their cost, speed and answer quality. No coding needed."
+description: "A lightweight workbench for quick LLM experiments: run a prompt and a dataset through several models side by side, then score the answers. No code needed."
 repo: https://github.com/marcornv/ai-workstation
 image: ./images/bancada.png
 imageAlt: Bancada results page comparing three local models by calls, tokens, latency, cost and evaluation score.
@@ -8,13 +8,13 @@ tags: [AI, Go, React, Python, Docker]
 order: 1
 ---
 
-A test bench for language models, made for people who don't write code. Run the same data through several models (OpenAI, Claude, Gemini or free models running on your own computer with Ollama), compare tokens, speed and cost, and score the quality of the answers. Everything happens in a web page on your own machine.
+Bancada (Portuguese for "workbench") is a small web app that runs on your own computer, for quick LLM experiments without writing code. Full experiment-tracking platforms are great when you need them. Sometimes you just want a prompt, a dataset, a few models and the results side by side, scored the way your use case needs.
 
-- **Experiments:** one prompt with `{column}` placeholders, a spreadsheet (CSV/JSONL) or a folder of images as input, and several models side by side.
-- **Results:** every model's answer for every input, with tokens, latency (p50/p95), an estimated cost before running, the real cost after, and CSV export.
-- **Evaluators:** score each answer from 0 to 1 with Ragas-style metrics, an AI judge following your own rubric, embedding similarity, simple text or regex rules, or decision models that answer with probabilities.
-- **Test an evaluator with a spreadsheet:** compare its scores with your own verdicts, see where it is too strict or too lenient, and get the best threshold.
-- **Images:** send photos, receipts or screenshots along with the prompt to models that can see.
-- **Plain files:** experiments and evaluators are YAML files you can edit in the interface or by hand, and keep in Git.
-- **No surprise bills:** nothing runs on a paid API until you have seen the cost estimate and confirmed.
-- **Easy to set up:** one Docker command. Portuguese or English interface. Runs only on your machine. MIT licensed.
+It's made for developers trying out prompts and models, teams measuring the quality of their LLM outputs, researchers who want to see how LLMs do on their own use case without learning to code, and anyone building an LLM judge who needs to check that it works before relying on it.
+
+- **Experiments:** write a prompt with `{column}` placeholders filled from a CSV (or use images) and run it across OpenAI, Claude, Gemini or local models through Ollama, side by side.
+- **Results:** every answer per input, with tokens, latency and cost, plus a cost estimate before you run anything.
+- **Evaluators:** set up your own and score answers against expected results with an LLM judge and rubric, embedding similarity, text or regex rules, or Ragas-style metrics.
+- **Evaluate results you already have:** got a CSV of documents and previous outputs? Run the evaluators on it directly, with no experiment needed. Add your own verdicts and Bancada shows how often the evaluator agrees with you and suggests the best threshold.
+- **Plain YAML files** for everything, so experiments are easy to reproduce and keep in Git.
+- **Free and open source:** runs only on your machine, in Portuguese or English, and the README has a step-by-step guide for people who have never used a terminal.
