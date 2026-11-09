@@ -1,7 +1,7 @@
 ---
 title: Bancada
 description: "A lightweight workbench for quick LLM experiments: run a prompt and a dataset through several models side by side, then score the answers. No code needed."
-repo: https://github.com/marcornv/ai-workstation
+repo: https://github.com/marcornv/bancada
 image: ./images/bancada.png
 imageAlt: Bancada results page comparing three local models by calls, tokens, latency, cost and evaluation score.
 tags: [AI, Go, React, Python, Docker]
